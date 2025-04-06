@@ -45,8 +45,7 @@ public class LLMAssistant : MonoBehaviour
 
     [SerializeField] private WebCamTextureManager webcamManager;
 
-   [SerializeField] 
-    private string apiKey;
+   [SerializeField] public string apiKey;
 
     private AudioSource audioSource;
 
@@ -60,13 +59,14 @@ public class LLMAssistant : MonoBehaviour
     public UnityEvent onAudioStop;
     private bool wasPlaying;
 
-    private OpenAIApi openai = new OpenAIApi(apiKey);
+    private OpenAIApi openai;
     private CancellationTokenSource token = new CancellationTokenSource();
     // a list of deivces
     private List<string> mics = new List<string>();
 
     private void Start()
     {
+        openai = new OpenAIApi(apiKey);
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.material.color = dftColor;
         audioSource = GetComponent<AudioSource>();
@@ -121,9 +121,6 @@ public class LLMAssistant : MonoBehaviour
         }
         else
         {
-            // Delay so we can avoid having our controller or hand in the image
-            // yield return new WaitForSeconds(1.0f);
-            // yield return new WaitForEndOfFrame();
             var webCamTex = webcamManager.WebCamTexture;
             capturedTexture = new Texture2D(webCamTex.width, webCamTex.height, TextureFormat.RGBA32, false);
             capturedTexture.SetPixels(webCamTex.GetPixels());
@@ -131,15 +128,6 @@ public class LLMAssistant : MonoBehaviour
         }
 
         return capturedTexture;
-
-        // if (imageConnector)
-        // {
-        //     imageConnector.SendImage(capturedTexture, transcription);
-        // }
-        // else
-        // {
-        //     Debug.LogError("ImageOpenAIConnector not assigned in VoiceCommandHandler.");
-        // }
     }
 
 
@@ -272,27 +260,11 @@ Whenever the user ask you something, the prompt will also provide the context of
         {
             var jsonResponse = JSON.Parse(request.downloadHandler.text);
             return jsonResponse["choices"][0]["message"]["content"].Value;
-            // onResponseReceived?.Invoke(responseContent);
-            // StopProcessingSound("");
-
-            // if (ttsManager)
-            // {
-            //     ttsManager.SynthesizeAndPlay(responseContent);
-            // }
-
-            // Debug.Log(responseContent);
         }
-    }
-
-
-    private void HandleResponse(List<CreateChatCompletionResponse> responses)
-    {
-        message.text = string.Join("", responses.Select(r => r.Choices[0].Delta.Content));
     }
 
     private async void TextToSpeech(string text)
     {
-        // message.text = text;
         var request = new CreateTextToSpeechRequest
         {
             Input = text,

@@ -2,6 +2,30 @@ QuestCameraKit is a collection of template and reference projects demonstrating 
 
 # LLM+AR For CSCI 5980
 
+## Prerequisites
+
+- **Meta Quest Device:** Update your device to HorizonOS v74 or later.
+- **Unity:** Use Unity version 6000.0.38f1 or later.
+- **Camera Passthrough API does not work in the Editor or XR Simulator.**
+- Get more information from the [Meta Quest Developer Documentation](https://developers.meta.com/horizon/documentation/unity/unity-pca-documentation)
+
+> [!CAUTION]
+> Every feature involving accessing the camera has significant impact on your application's performance. Be aware of this and ask yourself if the feature you are trying to implement can be done any other way besides using cameras.
+
+## Installation
+1. **Clone the Repository:**
+   ```
+   git clone https://github.com/chenzhutian/csci5980-lab3
+   ```
+
+2. **Open the Project in Unity:**
+Launch Unity and open the cloned project folder.
+
+## Build and Run 
+1. Open the `Samples/0 SmartCube/SmartCube` scene.
+2. Make sure to fill in the apiKey in the `LLMAssistant` component of the `[BuildingBlock] Cube` gameobject
+3. Make sure your headset is connected to the internet (the faster the better).
+4. Build the scene and run the APK on your headset.
 
 ----
 
@@ -60,27 +84,6 @@ QuestCameraKit is a collection of template and reference projects demonstrating 
 | **Public Experimental**| Apps using PCA are not allowed to be submitted to the Meta Horizon Store yet.                                                                                                                           |
 | **Specifications**     | - Frame Rate: `30fps`<br>- Image latency: `40-60ms`<br>- Available resolutions per eye: `320x240`, `640x480`, `800x600`, `1280x960`                                                                     |
 
-## Prerequisites
-
-- **Meta Quest Device:** Ensure you are runnning on a `Quest 3` or `Quest 3s` and your device is updated to `HorizonOS v74` or later.
-- **Unity:** Recommended is `Unity 6`. Also runs on Unity `2022.3. LTS`.
-- **Camera Passthrough API does not work in the Editor or XR Simulator.**
-- Get more information from the [Meta Quest Developer Documentation](https://developers.meta.com/horizon/documentation/unity/unity-pca-documentation)
-
-> [!CAUTION]
-> Every feature involving accessing the camera has significant impact on your application's performance. Be aware of this and ask yourself if the feature you are trying to implement can be done any other way besides using cameras.
-
-## Installation
-1. **Clone the Repository:**
-   ```
-   git clone https://github.com/xrdevrob/QuestCameraKit.git
-   ```
-
-2. **Open the Project in Unity:**
-Launch Unity and open the cloned project folder.
-
-3. **Configure Dependencies:**
-Follow the instructions in the section below to run one of the samples.
 
 # Running the Samples
 

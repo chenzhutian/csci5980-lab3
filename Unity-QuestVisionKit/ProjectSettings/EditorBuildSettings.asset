@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/0 ImageLLM/ImageLLM.unity
+    path: Assets/Samples/0 SmartCube/SmartCube.unity
     guid: e315df11792f04348a6913e0c2feac5f
-  - enabled: 0
-    path: Assets/Samples/5 ImageLLM/simple.unity
-    guid: 5aa6f18e122dc45a19437439e04b042d
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1f6e424bb69784f8e8b5df6563fe45de, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
